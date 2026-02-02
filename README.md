@@ -39,22 +39,22 @@ The following diagram illustrates the application flow, detailing how the Fronte
 
 ```mermaid
 graph TD
-    User((User)) -->|Browses| FE[Frontend (React + Vite)]
+    User(("User")) -->|Browses| FE["Frontend (React + Vite)"]
     
     subgraph "Backend Systems (Django)"
-        API[API Endpoints]
+        API["API Endpoints"]
         
         subgraph "Optimized Modules"
-            CT[Comment Tree]
-            LS[Like System]
-            LB[Leaderboard]
+            CT["Comment Tree"]
+            LS["Like System"]
+            LB["Leaderboard"]
         end
         
         API --> CT
         API --> LS
         API --> LB
         
-        CT -- "O(1) Fetch + Python Re-assembly" --> DB[(SQLite)]
+        CT -- "O(1) Fetch + Python Re-assembly" --> DB[("SQLite")]
         LS -- "Atomic Transaction + Row Locking" --> DB
         LB -- "Time-window Aggregation" --> DB
     end
